@@ -129,6 +129,7 @@
             <div class="form-group">
               <label>Tài khoản</label>
               <input id="TaiKhoan" class="form-control" placeholder="Nhập vào tài khoản" />
+              <div id="errorTK" style="display: none" class="text-danger"></div>
             </div>
             <div class="form-group">
               <label>Họ tên</label>
@@ -141,6 +142,7 @@
             <div class="form-group">
               <label>Email</label>
               <input id="Email" class="form-control" placeholder="Nhập vào Email" />
+              <div id="errorEmail" style="display: none" class="text-danger"></div>
             </div>
             <div class="form-group">
               <label>Hình Ảnh</label>
@@ -203,8 +205,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"
     integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <script src="../models/product.js"></script>
   <script src="../services/productService.js"></script>
+  <script src="./../models/validations.js"></script>
   <script src="../controllers/main.js"></script>
 </body>
 
