@@ -170,16 +170,57 @@ function getInfoUser() {
     "errorTK",
     "(*)Vui lòng nhập vào tài khoản"
   );
-  // console.log(flag);
-  // // Email
-  // flag &=
-  //   validation.kiemTraRong(email, "errorEmail", "(*) Vui long nhap email") &&
-  //   validation.kiemTraEmail(
-  //     email,
-  //     "errorEmail",
-  //     "(*) Vui long nhap email dung dinh dang"
-  //   );
-  console.log();
+  //  &&
+  // validation.kiemTraTrungTaiKhoan(
+  //   taiKhoan,
+  //   "errorTK",
+  //   "(*) Tài khoản đã đăng nhập",
+  //   getInfoUser()
+  // )
+
+  //Họ Tên
+  flag &=
+    validation.kiemTraRong(hoTen, "errorName", "(*) Vui lòng nhập họ tên") &&
+    validation.kiemTraChuoiKitu(hoTen, "errorName", "(*) Vui lòng nhập kí tự");
+  //Mật Khẩu
+  flag &=
+    validation.kiemTraRong(matKhau, "errorMK", "(*) Vui lòng nhập mật khẩu") &&
+    validation.kiemTraMatKhau(
+      matKhau,
+      "errorMK",
+      "(*) Mật khẩu chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt và 6-8 ký tự, 6, 8"
+    );
+  // Email
+  flag &=
+    validation.kiemTraRong(email, "errorEmail", "(*) Vui long nhap email") &&
+    validation.kiemTraEmail(
+      email,
+      "errorEmail",
+      "(*) Vui long nhap email dung dinh dang"
+    );
+  //Hình Ảnh
+  flag &= validation.kiemTraRong(
+    hinhAnh,
+    "errorPic",
+    "(*) Vui lòng nhập hình ảnh"
+  );
+  //Loại Người Dùng
+  flag &= validation.kiemTraSelect(
+    "loaiNguoiDung",
+    "errorLND",
+    "(*) Chọn Người Dùng"
+  );
+  //Loại Ngôn Ngữ
+  flag &= validation.kiemTraSelect("loaiNgonNgu", "errorLNN", "(*) Chọn Ngôn Ngữ");
+  //Mô Tả
+  flag &=
+    validation.kiemTraRong(moTa, "errorMoTa", "(*) Vui lòng nhập mô tả") &&
+    validation.kiemTraDoDaiKyTu(
+      moTa,
+      "errorMoTa",
+      "(*) Mô tả không được vượt quá 60 kí tự"
+    );
+
   if (flag === true) {
     user
       .addUserApi(nguoiDung)
@@ -193,9 +234,3 @@ function getInfoUser() {
       });
   }
 }
-// function addUser() {
-//   var arr = [];
-//   arr.push();
-//   console.log(arr);
-// }
-// addUser();
