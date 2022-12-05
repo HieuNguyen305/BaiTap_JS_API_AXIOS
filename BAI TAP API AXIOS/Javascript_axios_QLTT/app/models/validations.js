@@ -2,7 +2,7 @@ function Validations() {
   this.kiemTraRong = function (value, errorId, mess) {
     if (value === "") {
       getEle(errorId).innerHTML = mess;
-      getEle(errorId).innerHTML = "block";
+      getEle(errorId).style.display = "block";
       return false;
     }
     getEle(errorId).innerHTML = "";

@@ -64,7 +64,7 @@ function deleteUser(id) {
 getEle("btnThemNguoiDung").onclick = function () {
   var content = "Add User";
   document.getElementsByClassName("modal-title")[0].innerHTML = content;
-  var button = `<button class="btn btn-primary" onclick="addUser(true)">ADD USER</button>`;
+  var button = `<button class="btn btn-primary" onclick="getInfoUser()">ADD USER</button>`;
   document.getElementsByClassName("modal-footer")[0].innerHTML = button;
   // var sv = true;
   // if (sv) {
@@ -149,6 +149,7 @@ function getInfoUser() {
   var loaiNguoiDung = getEle("loaiNguoiDung").value;
   var loaiNgonNgu = getEle("loaiNgonNgu").value;
   var moTa = getEle("MoTa").value;
+  console.log(taiKhoan);
   var nguoiDung = new Product(
     "",
     taiKhoan,
@@ -160,17 +161,16 @@ function getInfoUser() {
     loaiNgonNgu,
     moTa
   );
-  // //Flag
-  // var flag = true;
-  // // Check Validation
-  // if (isAdd) {
-  //   //Tài Khoản
-  //   flag &&= validation.kiemTraRong(
-  //     taiKhoan,
-  //     "errorTK",
-  //     "(*)Vui lòng nhập vào tài khoản"
-  //   );
-  // }
+  //Flag
+  var flag = true;
+  // Check Validation
+  //Tài Khoản
+  flag &= validation.kiemTraRong(
+    taiKhoan,
+    "errorTK",
+    "(*)Vui lòng nhập vào tài khoản"
+  );
+  // console.log(flag);
   // // Email
   // flag &=
   //   validation.kiemTraRong(email, "errorEmail", "(*) Vui long nhap email") &&
@@ -179,17 +179,19 @@ function getInfoUser() {
   //     "errorEmail",
   //     "(*) Vui long nhap email dung dinh dang"
   //   );
-
-  user
-    .addUserApi(nguoiDung)
-    .then(function (rs) {
-      alert("Add Success!");
-      getUser();
-      document.getElementsByClassName("close")[0].click();
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  console.log();
+  if (flag === true) {
+    user
+      .addUserApi(nguoiDung)
+      .then(function (rs) {
+        alert("Add Success!");
+        getUser();
+        document.getElementsByClassName("close")[0].click();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 }
 // function addUser() {
 //   var arr = [];
