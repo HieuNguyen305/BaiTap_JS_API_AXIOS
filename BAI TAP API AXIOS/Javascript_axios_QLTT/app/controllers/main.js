@@ -174,7 +174,7 @@ function getInfoUser() {
     validation.kiemTraTrungTaiKhoan(
       taiKhoan,
       "errorTK",
-      "(*) Tài khoản đã đăng nhập",
+      "(*) Tài khoản đã tồn tại",
       user
     );
 
