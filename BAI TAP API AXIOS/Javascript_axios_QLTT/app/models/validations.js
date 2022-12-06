@@ -9,16 +9,18 @@ function Validations() {
     getEle(errorId).style.display = "none";
     return true;
   };
-  this.kiemTraTrungTaiKhoan = function (value, errorId, mess, data) {
+  this.kiemTraTrungTaiKhoan = async function (value, errorId, mess, usermodel) {
+    var respone = await usermodel.getInfoUserApi();
+    console.log(respone);
+    var list = respone?.data || [];
     var exist = false;
-    for (var i = 0; i < data.length; i++) {
-      var sv = data[i];
-      if (sv.taiKhoan === value) {
+    for (var i = 0; i < list.length; i++) {
+      var user = list[i];
+      if (user.taiKhoan === value) {
         exist = true;
         break;
       }
     }
-
     if (exist) {
       getEle(errorId).innerHTML = mess;
       getEle(errorId).style.display = "block";

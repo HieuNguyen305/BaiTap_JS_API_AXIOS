@@ -165,18 +165,18 @@ function getInfoUser() {
   var flag = true;
   // Check Validation
   //Tài Khoản
-  flag &= validation.kiemTraRong(
-    taiKhoan,
-    "errorTK",
-    "(*)Vui lòng nhập vào tài khoản"
-  );
-  //  &&
-  // validation.kiemTraTrungTaiKhoan(
-  //   taiKhoan,
-  //   "errorTK",
-  //   "(*) Tài khoản đã đăng nhập",
-  //   getInfoUser()
-  // )
+  flag &=
+    validation.kiemTraRong(
+      taiKhoan,
+      "errorTK",
+      "(*)Vui lòng nhập vào tài khoản"
+    ) &&
+    validation.kiemTraTrungTaiKhoan(
+      taiKhoan,
+      "errorTK",
+      "(*) Tài khoản đã đăng nhập",
+      user
+    );
 
   //Họ Tên
   flag &=
@@ -211,7 +211,11 @@ function getInfoUser() {
     "(*) Chọn Người Dùng"
   );
   //Loại Ngôn Ngữ
-  flag &= validation.kiemTraSelect("loaiNgonNgu", "errorLNN", "(*) Chọn Ngôn Ngữ");
+  flag &= validation.kiemTraSelect(
+    "loaiNgonNgu",
+    "errorLNN",
+    "(*) Chọn Ngôn Ngữ"
+  );
   //Mô Tả
   flag &=
     validation.kiemTraRong(moTa, "errorMoTa", "(*) Vui lòng nhập mô tả") &&
